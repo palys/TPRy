@@ -98,5 +98,7 @@ if function_type == "bcast" or function_type == "gather":
   build_in_time_millis = build_in_time / number_of_communicates * 1000
   own_time_millis = own_time / number_of_communicates * 1000
   print "{0} {1} {2} {3} {4}".format(size, data_size, number_of_communicates, build_in_time_millis, own_time_millis)
+  MPI.Finalize()
 elif function_type == "barrier":
  barrier(number_of_communicates)
+ MPI.Finalize()
