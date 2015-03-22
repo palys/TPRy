@@ -8,6 +8,12 @@ data_size = int(sys.argv[1])
 number_of_communicates = int(sys.argv[2])
 function_type = sys.argv[3]
 
+def divide():
+ global comm
+ size_of_first_group = int(sys.argv[4])
+ new_comm = comm.Split(1 if rank <= size_of_first_group else 0)
+ comm = new_comm
+
 def own_bcast(data_size):
  if rank == 0:
   data = range(0, data_size)
@@ -87,6 +93,8 @@ if function_type == "bcast":
 elif function_type == "gather":
  functions_to_test = [gather, own_gather]
 
+
+divide()
 if function_type == "bcast" or function_type == "gather":
  build_in_time = 0.0
  own_time = 0.0
