@@ -13,7 +13,7 @@ def divide():
  global size
  global rank
  size_of_first_group = int(sys.argv[4])
- new_comm = comm.Split(1 if rank <= size_of_first_group else 0)
+ new_comm = comm.Split(1 if rank < size_of_first_group else 0)
  comm = new_comm
  rank = comm.Get_rank()
  size = comm.Get_size()
